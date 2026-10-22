@@ -1,0 +1,723 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --warna-primary: maroon;
+  --warna-secondary: white;
+  --warna-gold: #c5982d;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--warna-primary);
+  border-left: 10px solid var(--warna-primary);
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.active {
+  background-color: var(--warna-secondary);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--warna-secondary);
+}
+.navigation ul li:hover a,
+.navigation ul li.active a {
+  color: var(--warna-primary);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.logo {
+  height: 50px;
+  background-image: url("../img/logo_tim.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.logo-white {
+  height: 50px;
+  background-image: url("../img/logo_tim-white.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.logo-white:hover {
+  background-image: url("../img/logo_tim.png");
+}
+
+.dashboard {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--warna-secondary);
+  transition: 0.5s;
+}
+
+.dashboard.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background-color: maroon;
+  background-image: url("../img/motif_bintang.png");
+  background-size: contain;
+  background-repeat: repeat-x;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Home Dashboard */
+
+.home {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.home img {
+  width: 100%;
+  height: 300px;
+}
+
+/* Form Data Tim */
+.submission-data-tim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+/* Form Pengumpulan */
+.submission-lomba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+/* Form Ganti Sandi */
+
+.submission-sandi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: white;
+}
+
+/* Isi Form */
+.container_form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+}
+
+.tabel {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+}
+
+.back-link {
+  display: block;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: maroon;
+  text-decoration: none;
+  margin-left: 3px;
+}
+
+.back-link:hover {
+  color: var(--warna-gold);
+}
+
+.header_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_form h1 {
+  font-size: 20px;
+  margin: 0;
+  margin-top: 25px;
+}
+
+.dropdown {
+  display: block;
+  font-size: 14px;
+  margin: 30px auto 5px;
+  text-align: center; /* Change text alignment to left */
+  width: 100%; /* Adjust width to match the input field */
+}
+
+.dropdown label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.dropdown select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 50%; 
+}
+
+.deskripsi {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.deskripsi h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.deskripsi p {
+  font-size: 14px;
+  margin: 5px 0 20px 0;
+}
+
+.content {
+  margin-top: 50px;
+  border-image: url("../img/motif_bintang.png");
+}
+
+.content-website {
+  text-align: left;
+}
+
+.content-game {
+  text-align: left;
+}
+
+.content-animasi {
+  text-align: left;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+form label {
+  display: block;
+  font-size: 14px;
+  margin: 30px auto 5px;
+  text-align: left; /* Change text alignment to left */
+  width: 50%; /* Adjust width to match the input field */
+}
+
+form input[type="text"],
+form input[type="url"],
+form input[type="file"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="password"],
+form textarea {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+form button {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: maroon;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--warna-gold);
+}
+
+
+/* Card Home Dashboard */
+.card-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  padding: 50px 0;
+}
+.card-item {
+  -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px);
+
+  margin: 0 15px 30px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+.card-item-link {
+  display: block;
+  text-decoration: none;
+  padding: 30px 20px;
+  background-color: var(--warna-primary);
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.card-item-link:hover {
+  text-decoration: none;
+  color: var(--warna-primary);
+}
+
+.card-item-link:hover .card-item-bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+
+.card-item-title {
+  min-height: 87px;
+  margin: 0 0 25px;
+
+  overflow: hidden;
+
+  font-weight: bold;
+  font-size: 30px;
+  color: #fff;
+
+  z-index: 2;
+  position: relative;
+}
+
+.card-item-bg {
+  height: 128px;
+  width: 128px;
+  background-color: var(--warna-gold);
+
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* Style tabel */
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin: 20px auto;
+}
+
+th {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-selengkapnya {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-selengkapnya:hover {
+  background-color: var(--warna-primary);
+}
+
+/* style status karya */
+.status-karya {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.upload-icon {
+  margin-bottom: 20px;
+}
+
+.upload-icon img {
+  height: 300px;
+  width: 300px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.form-group input[type="date"] {
+  margin-right: 140px;
+  margin-left: 140px;
+}
+
+form input[type="date"] {
+  width: 50%;
+}
+
+.tambah-link {
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: block;
+  background-color: maroon;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+}
+
+.tambah-link:hover {
+  background-color: var(--warna-gold);
+}
+
+.icon-left {
+  margin-right: 8px;
+}
+
+/* Detail Lomba */
+.detail-container {
+  font-size: 20px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.section-detail {
+  margin-bottom: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.section-header {
+  background-color: #666;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 12px;
+  position: absolute;
+  top: -5px;
+  transform: translateY(-50%);
+  z-index: 1;
+  background-color: maroon;
+}
+
+.section-content {
+  background-color: var(--warna-gold);
+  padding: 30px 20px 20px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.section-content p,
+.section-content ol {
+  margin: 0;
+  background-color: var(--warna-gold);
+  color: white;
+  opacity: 0.8;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.section-content ol {
+  padding-left: 30px;
+}
+
+.section-content ol li {
+  margin-bottom: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .dashboard {
+    width: 100%;
+    left: 0;
+  }
+  .dashboard.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card-item {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .card-item-title {
+    font-size: 24px;
+  }
+
+  .tabel {
+    overflow-x: auto;
+  }
+  
+  .content {
+    overflow-x: auto;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .card-container {
+    width: 96%;
+  }
+
+  .card-item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .card-item-title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .card-item-link {
+    padding: 22px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .dashboard.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+
+  .tabel {
+    overflow-x: auto;
+  }
+
+  .detail-container {
+    font-size: 16px;
+  }
+
+    form label {
+      display: block;
+      font-size: 14px;
+      margin: 30px auto 5px;
+      text-align: left; /* Change text alignment to left */
+      width: 100%; /* Adjust width to match the input field */
+    }
+
+  form input[type="text"],
+  form input[type="url"],
+  form input[type="file"],
+  form input[type="email"],
+  form input[type="tel"],
+  form input[type="password"],
+  form textarea {
+    width: 100%;
+  }
+
+  .dropdown select{
+    width: 100%; /* Adjust width to match the input field */
+  }
+
+  .content {
+    overflow-x: auto;
+  }
+
+  .dashboard.active {
+    left: 0;
+  }
+
+  form button {
+    width: 100%;
+  }
+}
+
+
