@@ -66,6 +66,6 @@ CREATE TABLE IF NOT EXISTS peserta_website (
     FOREIGN KEY (id_tim) REFERENCES tim(id) ON DELETE CASCADE
 );
 
--- Seed admin account (password: admin123)
+-- Seed admin account (password: admin@alauto.com)
 INSERT INTO akun (email, password, nama, tipe) VALUES
-('admin@kenten.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Admin', 'admin');
+('admin@alauto.com', '$2y$10$wfN6tc3mAbxvn575QR85oeodQ/LjqFKmVN52ng0UIupgnAWy.kvJS', 'Admin', 'admin');
