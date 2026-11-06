@@ -1,4 +1,4 @@
--- TiketIT Database Schema
+/* TiketIT Database Schema
 -- Sistem Helpdesk & Ticketing IT
 -- Import this file into MySQL after creating database 'tiketit'
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
     deskripsi TEXT,
-    icon VARCHAR(50) DEFAULT '🔧',
+    icon VARCHAR(50) DEFAULT '',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -122,11 +122,11 @@ CREATE TABLE IF NOT EXISTS knowledge_base (
 -- SEED DATA: Kategori Layanan IT
 -- ============================================================
 INSERT INTO categories (nama, deskripsi, icon) VALUES
-('Hardware', 'Masalah perangkat keras: laptop, PC, printer, monitor, dll.', '💻'),
-('Jaringan', 'Masalah jaringan: WiFi, LAN, VPN, internet, dll.', '🌐'),
-('Software', 'Masalah aplikasi/software: instalasi, error, update, dll.', '📦'),
-('Akun & Email', 'Masalah akun: password, email, akses sistem, dll.', '🔐'),
-('Lainnya', 'Masalah IT lainnya yang tidak termasuk kategori di atas.', '🔧');
+('Hardware', 'Masalah perangkat keras: laptop, PC, printer, monitor, dll.', '[HW]'),
+('Jaringan', 'Masalah jaringan: WiFi, LAN, VPN, internet, dll.', '[NET]'),
+('Software', 'Masalah aplikasi/software: instalasi, error, update, dll.', '[SW]'),
+('Akun & Email', 'Masalah akun: password, email, akses sistem, dll.', '[ACC]'),
+('Lainnya', 'Masalah IT lainnya yang tidak termasuk kategori di atas.', '[OTH]');
 
 -- ============================================================
 -- SEED DATA: Akun Demo
