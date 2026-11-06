@@ -5,42 +5,37 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-$id_akun = $_SESSION['user']['id'];
-$password_lama = $_POST['password_lama'];
-$password_baru = $_POST['password_baru'];
+$userId = $_SESSION['user']['id'];
+$oldPassword = $_POST['old_password'] ?? '';
+$newPassword = $_POST['new_password'] ?? '';
+$confirmPassword = $_POST['confirm_password'] ?? '';
 
-$akun = $db->query('SELECT * FROM akun WHERE id = ?', [
-    $id_akun
-])->get();
+$user = $db->query('SELECT * FROM users WHERE id = :id', ['id' => $userId])->get();
 
-// cek apakah akun terdaftar
-if ($akun) {
-
-    authorize($id_akun === $akun['id'], 403);
-
-    // akun terdaftar
-    $hash_password_lama = $akun['password'];
-
-    // cek apakah password lama yang dimasukkan benar
-    if (password_verify($password_lama, $hash_password_lama)) {
-        // password lama yang dimasukkan benar
-        $hash_password_baru = password_hash($password_baru, PASSWORD_DEFAULT);
-
-        $db->query('UPDATE akun SET password = ? WHERE id = ?', [
-            $hash_password_baru,
-            $id_akun
-        ]);
-
-        unset($_SESSION['user']);
-        header('location: /login');
-        exit();
-        // TODO kasih pesan berhasil ubah password
-    } else {
-        // password lama yang dimasukkan salah
-        header('location: /' . $_SESSION['user']['hak_akses'] . '/sandi?error=salahpw');
-        exit();
-        // TODO kasih pesan gagal ubah password
-    }
-} else {
-    abort(404);
+if (!$user || !password_verify($oldPassword, $user['password'])) {
+    $_SESSION['error'] = 'Password lama salah.';
+    header('location: /' . $_SESSION['user']['role'] . '/sandi');
+    exit();
 }
+
+if (strlen($newPassword) < 6) {
+    $_SESSION['error'] = 'Password baru minimal 6 karakter.';
+    header('location: /' . $_SESSION['user']['role'] . '/sandi');
+    exit();
+}
+
+if ($newPassword !== $confirmPassword) {
+    $_SESSION['error'] = 'Konfirmasi password tidak cocok.';
+    header('location: /' . $_SESSION['user']['role'] . '/sandi');
+    exit();
+}
+
+$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+$db->query('UPDATE users SET password = :password WHERE id = :id', [
+    'password' => $hashedPassword,
+    'id' => $userId,
+]);
+
+$_SESSION['success'] = 'Password berhasil diubah.';
+header('location: /' . $_SESSION['user']['role'] . '/sandi');
+exit();

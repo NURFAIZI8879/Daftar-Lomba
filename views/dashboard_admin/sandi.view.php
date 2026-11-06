@@ -1,40 +1,35 @@
 <?php require base_path('views/partials/head.php') ?>
-<div class="container">
-    <?php require base_path('views/partials/sidebar.php') ?>
+<div class="dashboard-container">
+    <div class="page-header">
+        <h1>Ganti Password</h1>
+    </div>
 
-    <!-- Dashboard -->
-    <div class="dashboard active">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success']) ?></div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-error"><?= htmlspecialchars($_SESSION['error']) ?></div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    <div class="form-card" style="max-width: 500px;">
+        <form action="/sandi" method="POST">
+            <div class="form-group">
+                <label for="old_password">Password Lama *</label>
+                <input type="password" id="old_password" name="old_password" required placeholder="Password lama">
             </div>
-        </div>
-
-        <div class="submission-sandi" id="submission-sandi">
-            <div class="container_form">
-                <a href="/admin" class="back-link"></ion-icon>Kembali</a>
-                <div class="header_form">
-                    <h1>Ganti Kata Sandi</h1>
-                </div>
-                <div class="content">
-                    <form action="/sandi" method="post" enctype="multipart/form-data">
-                        <label for="password_lama" class="label-sandi">Password Lama:</label>
-                        <input type="password" id="password_lama" name="password_lama"
-                            placeholder="Masukkan Password Lama" required>
-
-                        <label for="password_baru" class="label-sandi">Password Baru:</label>
-                        <input type="password" id="password_baru" name="password_baru"
-                            placeholder="Masukkan Password Baru" required>
-                            
-                        <button type="submit">GANTI</button>
-                    </form>
-                </div>
+            <div class="form-group">
+                <label for="new_password">Password Baru *</label>
+                <input type="password" id="new_password" name="new_password" required placeholder="Minimal 6 karakter">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="confirm_password">Konfirmasi Password Baru *</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Ulangi password baru">
+            </div>
+            <button type="submit" class="btn-primary btn-full">Ganti Password</button>
+        </form>
     </div>
 </div>
-
-<!-- =========== Scripts =========  -->
-<script src="../../js/script.js"></script>
-
 <?php require base_path('views/partials/foot.php') ?>

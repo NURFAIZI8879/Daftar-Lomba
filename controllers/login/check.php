@@ -5,39 +5,51 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = trim($_POST['email'] ?? '');
+$password = $_POST['password'] ?? '';
 
-$account = $db->query('SELECT * FROM akun WHERE email = :email', [
+// Validasi input
+if (empty($email) || empty($password)) {
+    $_SESSION['error'] = 'Email dan password wajib diisi.';
+    header('location: /login?error=empty');
+    exit();
+}
+
+$account = $db->query('SELECT * FROM users WHERE email = :email', [
     'email' => $email
 ])->get();
 
 if ($account) {
-    // Akun ditemukan
     if (password_verify($password, $account['password'])) {
+        // Regenerate session ID untuk keamanan (session fixation protection)
+        session_regenerate_id(true);
+
         $_SESSION['user'] = [
             'id' => $account['id'],
             'email' => $account['email'],
             'nama' => $account['nama'],
-            'hak_akses' => $account['tipe'],
+            'role' => $account['role'],
+            'departemen' => $account['departemen'],
         ];
 
-        if ($account['tipe'] === 'admin') {
+        // Redirect berdasarkan role
+        if ($account['role'] === 'admin') {
             header('location: /admin');
+        } elseif ($account['role'] === 'teknisi') {
+            header('location: /admin/tickets');
         } else {
-            header('location: /peserta');
+            header('location: /user');
         }
-
         exit();
     } else {
-        $_SESSION['pesan'] = 'Password salah';
+        $_SESSION['error'] = 'Password salah.';
         header('location: /login?error=salahpw');
         exit();
     }
 } else {
-    // Akun tidak ditemukan
+    $_SESSION['error'] = 'Akun tidak ditemukan.';
     view('login.view.php', [
         'css' => 'login.css',
-        'title' => 'Login'
+        'title' => 'Login - TiketIT'
     ]);
 }

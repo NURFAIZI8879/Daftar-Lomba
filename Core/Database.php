@@ -52,17 +52,4 @@ class Database
     {
         return $this->connection->lastInsertId();
     }
-
-    public function isParticipant($team_id)
-    {
-        $isAnimationParticipant =  $this->query('SELECT * FROM peserta_animasi WHERE id_tim  = ?', [$team_id])->get();
-        $isGameParticipant =  $this->query('SELECT * FROM peserta_game WHERE id_tim  = ?', [$team_id])->get();
-        $isWebsiteParticipant =  $this->query('SELECT * FROM peserta_website WHERE id_tim  = ?', [$team_id])->get();
-
-        if ($isAnimationParticipant || $isGameParticipant || $isWebsiteParticipant) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

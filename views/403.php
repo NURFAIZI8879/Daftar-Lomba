@@ -1,34 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>403 Forbidden</title>
-    <link rel="stylesheet" href="/css/home.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
+    <title>403 Forbidden - TiketIT</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 
 <body>
-    <section id="home" class="section-home">
-        <div class="home-content">
-            <div class="description">
-                <h2>403 Forbidden</h2>
-                <p>Kamu tidak memiliki hak untuk mengakses halaman ini.</p>
-                <h3><a href="/" style="text-decoration: none;">Kembali</a></h3>
-            </div>
-            <div class="image-placeholder">
-                <img src="/img/logo_tim-whitefont.png" alt="Logo" class="image-placeholder" id="maskot-deskripsi">
-            </div>
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+        <div>
+            <div style="font-size:4rem;margin-bottom:1rem;">🚫</div>
+            <h1 style="font-size:2rem;font-weight:700;margin-bottom:0.5rem;">403 Forbidden</h1>
+            <p style="color:#64748b;margin-bottom:1.5rem;">Kamu tidak memiliki hak untuk mengakses halaman ini.</p>
+            <a href="/" style="display:inline-block;padding:0.75rem 1.5rem;background:#0d9488;color:white;border-radius:0.5rem;text-decoration:none;font-weight:500;">Kembali ke Beranda</a>
         </div>
-    </section>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="js/script.home.js"></script>
+    </div>
 </body>
 
 </html>

@@ -1,9 +1,23 @@
-﻿vendor/
-node_modules/
-.env
-*.log
+﻿# Config (production credentials)
+config.local.php
+
+# Uploads
+public/uploads/
+
+# OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Local production credentials
-config.local.php
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
