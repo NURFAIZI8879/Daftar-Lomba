@@ -2,7 +2,8 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Knowledge Base</h1>
-    </div>
+    
+    <a href="/user" class="btn-secondary btn-sm">Kembali</a></div>
 
     <!-- Search -->
     <form method="GET" action="/user/knowledge" class="search-bar">

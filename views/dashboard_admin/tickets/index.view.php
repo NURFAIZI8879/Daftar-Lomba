@@ -1,9 +1,10 @@
-﻿<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/dash-navbar.php') ?>
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Kelola Tiket</h1>
-    </div>
+    
+    <a href="/admin" class="btn-secondary btn-sm">Kembali</a></div>
 
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success']) ?></div>

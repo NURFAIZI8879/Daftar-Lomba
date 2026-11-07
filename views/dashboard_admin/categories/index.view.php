@@ -2,7 +2,8 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Kelola Kategori</h1>
-    </div>
+    
+    <a href="/admin" class="btn-secondary btn-sm">Kembali</a></div>
 
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success']) ?></div>
@@ -54,8 +55,7 @@
                         <td><?= htmlspecialchars($cat['nama']) ?></td>
                         <td><?= htmlspecialchars($cat['deskripsi'] ?? '-') ?></td>
                         <td>
-                            <form action="/admin/categories/delete" method="POST"
-                                <?= csrf_field() ?> style="display:inline;" onsubmit="return confirm('Hapus kategori ini?')">
+                            <form action="/admin/categories/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus kategori ini?')">\n                                <?= csrf_field() ?>
                                 <input type="hidden" name="id" value="<?= $cat['id'] ?>">
                                 <button type="submit" class="btn-danger btn-sm">Hapus</button>
                             </form>

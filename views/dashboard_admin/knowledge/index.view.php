@@ -2,7 +2,8 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Knowledge Base</h1>
-    </div>
+    
+    <a href="/admin" class="btn-secondary btn-sm">Kembali</a></div>
 
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success']) ?></div>
@@ -55,8 +56,7 @@
             <div class="kb-admin-card">
                 <div class="kb-admin-header">
                     <h3><?= htmlspecialchars($article['judul']) ?></h3>
-                    <form action="/admin/knowledge/delete" method="POST"
-                        <?= csrf_field() ?> style="display:inline;" onsubmit="return confirm('Hapus artikel ini?')">
+                    <form action="/admin/knowledge/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus artikel ini?')">\n                        <?= csrf_field() ?>
                         <input type="hidden" name="id" value="<?= $article['id'] ?>">
                         <button type="submit" class="btn-danger btn-sm">Hapus</button>
                     </form>

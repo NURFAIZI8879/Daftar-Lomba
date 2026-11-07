@@ -2,7 +2,8 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Aset Perangkat</h1>
-    </div>
+    
+    <a href="/admin" class="btn-secondary btn-sm">Kembali</a></div>
 
     <?php if (empty($assets)): ?>
         <div class="empty-state">

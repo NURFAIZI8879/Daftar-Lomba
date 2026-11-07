@@ -2,7 +2,8 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Pengumuman</h1>
-    </div>
+    
+    <a href="/admin" class="btn-secondary btn-sm">Kembali</a></div>
 
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success']) ?></div>
@@ -56,8 +57,7 @@
                 <p class="ann-body"><?= nl2br(htmlspecialchars($ann['isi'])) ?></p>
                 <div class="ann-footer">
                     <small>Oleh: <?= htmlspecialchars($ann['author_nama']) ?></small>
-                    <form action="/admin/announcements/delete" method="POST"
-                        <?= csrf_field() ?> style="display:inline;" onsubmit="return confirm('Hapus pengumuman ini?')">
+                    <form action="/admin/announcements/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus pengumuman ini?')">\n                        <?= csrf_field() ?>
                         <input type="hidden" name="id" value="<?= $ann['id'] ?>">
                         <button type="submit" class="btn-danger btn-sm">Hapus</button>
                     </form>
