@@ -26,6 +26,7 @@ $router->post('/sandi', 'controllers/sandi.update.php');
 // ===== Admin Dashboard =====
 $router->get('/admin', 'controllers/admin/index.php');
 $router->get('/admin/tickets', 'controllers/admin/tickets/index.php');
+$router->get('/admin/tickets/export', 'controllers/admin/tickets/export.php');
 $router->get('/admin/tickets/detail', 'controllers/admin/tickets/detail.php');
 $router->post('/admin/tickets/assign', 'controllers/admin/tickets/assign.php');
 $router->post('/admin/tickets/status', 'controllers/admin/tickets/status.php');

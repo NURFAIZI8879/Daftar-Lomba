@@ -72,6 +72,7 @@
             </select>
             <button type="submit" class="btn-primary">Filter</button>
             <a href="/admin/tickets" class="btn-secondary">Reset</a>
+            <a href="/admin/tickets/export<?= !empty($_SERVER['QUERY_STRING']) ? '?' . htmlspecialchars($_SERVER['QUERY_STRING']) : '' ?>" class="btn-secondary"> Export CSV</a>
         </form>
     </div>
 
@@ -124,6 +125,24 @@
                 </tbody>
             </table>
         </div>
+    <?php endif; ?>
+
+    <!-- Pagination -->
+    <?php if ($pagination['totalPages'] > 1): ?>
+    <div class="pagination">
+        <?php if ($pagination['page'] > 1): ?>
+            <a href="/admin/tickets?page=<?= $pagination['page'] - 1 ?><?= !empty($filters['status']) ? '&status=' . urlencode($filters['status']) : '' ?><?= !empty($filters['prioritas']) ? '&prioritas=' . urlencode($filters['prioritas']) : '' ?><?= !empty($filters['kategori']) ? '&kategori=' . urlencode($filters['kategori']) : '' ?><?= !empty($filters['search']) ? '&search=' . urlencode($filters['search']) : '' ?>" class="btn-secondary btn-sm"> Prev</a>
+        <?php endif; ?>
+
+        <span class="pagination-info">
+            Halaman <?= $pagination['page'] ?> dari <?= $pagination['totalPages'] ?>
+            (<?= $pagination['total'] ?> tiket)
+        </span>
+
+        <?php if ($pagination['page'] < $pagination['totalPages']): ?>
+            <a href="/admin/tickets?page=<?= $pagination['page'] + 1 ?><?= !empty($filters['status']) ? '&status=' . urlencode($filters['status']) : '' ?><?= !empty($filters['prioritas']) ? '&prioritas=' . urlencode($filters['prioritas']) : '' ?><?= !empty($filters['kategori']) ? '&kategori=' . urlencode($filters['kategori']) : '' ?><?= !empty($filters['search']) ? '&search=' . urlencode($filters['search']) : '' ?>" class="btn-primary btn-sm">Next </a>
+        <?php endif; ?>
+    </div>
     <?php endif; ?>
 </div>
 <?php require base_path('views/partials/foot.php') ?>

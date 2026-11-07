@@ -4,6 +4,10 @@ use Core\App;
 use Core\Database;
 use Core\Auth;
 
+Auth::requireRole(['admin', 'teknisi']);
+
+// CSRF validation (for POST actions only)
+// GET requests don't need CSRF
 
 $db = App::resolve(Database::class);
 
@@ -12,6 +16,11 @@ $status = $_GET['status'] ?? '';
 $priority = $_GET['prioritas'] ?? '';
 $category = $_GET['kategori'] ?? '';
 $search = trim($_GET['search'] ?? '');
+
+// Pagination
+$perPage = 10;
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$offset = ($page - 1) * $perPage;
 
 // Build query
 $sql = 'SELECT t.*, c.nama AS kategori_nama, c.icon AS kategori_icon,
@@ -42,7 +51,24 @@ if ($search) {
     $params['search2'] = '%' . $search . '%';
 }
 
-$sql .= ' ORDER BY t.created_at DESC';
+// Count total
+$countSql = str_replace('SELECT t.*, c.nama AS kategori_nama, c.icon AS kategori_icon,
+               u.nama AS user_nama, u.departemen AS user_departemen,
+               tek.nama AS teknisi_nama', 'SELECT COUNT(*) as total', $sql);
+// Simpler: just count
+$countSql = 'SELECT COUNT(*) as total FROM tickets t JOIN users u ON t.id_user = u.id WHERE 1=1';
+$countParams = [];
+if ($status) { $countSql .= ' AND t.status = :status'; $countParams['status'] = $status; }
+if ($priority) { $countSql .= ' AND t.prioritas = :prioritas'; $countParams['prioritas'] = $priority; }
+if ($category) { $countSql .= ' AND t.id_category = :category'; $countParams['category'] = (int) $category; }
+if ($search) { $countSql .= ' AND (t.judul LIKE :search OR u.nama LIKE :search2)'; $countParams['search'] = '%' . $search . '%'; $countParams['search2'] = '%' . $search . '%'; }
+
+$totalTickets = $db->query($countSql, $countParams)->get()['total'];
+$totalPages = max(1, ceil($totalTickets / $perPage));
+
+$sql .= ' ORDER BY t.created_at DESC LIMIT :limit OFFSET :offset';
+$params['limit'] = $perPage;
+$params['offset'] = $offset;
 
 $tickets = $db->query($sql, $params)->getAll();
 $categories = $db->query('SELECT * FROM categories ORDER BY nama')->getAll();
@@ -64,4 +90,5 @@ view('dashboard_admin/tickets/index.view.php', [
     'categories' => $categories,
     'stats' => $stats,
     'filters' => ['status' => $status, 'prioritas' => $priority, 'kategori' => $category, 'search' => $search],
+    'pagination' => ['page' => $page, 'totalPages' => $totalPages, 'total' => $totalTickets, 'perPage' => $perPage],
 ]);

@@ -12,6 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         }, 5000);
     });
+
+    // Loading spinner on form submit
+    document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener('submit', function() {
+            const btn = form.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.classList.add('btn-loading');
+                btn.disabled = true;
+            }
+        });
+    });
 });
 
 // Confirm delete
