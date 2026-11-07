@@ -91,11 +91,7 @@
     <section class="cta-section">
         <div class="container">
             <h2>Siap menggunakan TiketIT?</h2>
-            <p>Login atau register untuk mulai melaporkan keluhan IT.</p>
-            <div class="hero-buttons">
-                <a href="/register" class="btn-primary">Register Sekarang</a>
-                <a href="/login" class="btn-secondary">Sudah punya akun? Login</a>
-            </div>
+            <p>Gunakan akun demo untuk mencoba: admin@tiketit.com / password</p>
         </div>
     </section>
 </div>
