@@ -57,7 +57,8 @@
                 <p class="ann-body"><?= nl2br(htmlspecialchars($ann['isi'])) ?></p>
                 <div class="ann-footer">
                     <small>Oleh: <?= htmlspecialchars($ann['author_nama']) ?></small>
-                    <form action="/admin/announcements/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus pengumuman ini?')">\n                        <?= csrf_field() ?>
+                    <form action="/admin/announcements/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus pengumuman ini?')">
+                        <?= csrf_field() ?>
                         <input type="hidden" name="id" value="<?= $ann['id'] ?>">
                         <button type="submit" class="btn-danger btn-sm">Hapus</button>
                     </form>

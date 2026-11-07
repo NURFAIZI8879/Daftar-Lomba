@@ -28,20 +28,27 @@ foreach ($tablesResult as $row) {
     $tableNames[] = array_values($row)[0];
 }
 
-$sql = "-- TiketIT Database Backup\n";
-$sql .= "-- Date: " . date('Y-m-d H:i:s') . "\n\n";
+$sql = "-- TiketIT Database Backup
+";
+$sql .= "-- Date: " . date('Y-m-d H:i:s') . "
+
+";
 
 foreach ($tableName as $table) {
     // Get CREATE TABLE
     $create = $db->query("SHOW CREATE TABLE `$table`")->get();
-    $sql .= "DROP TABLE IF EXISTS `$table`;\n";
-    $sql .= $create['Create Table'] . ";\n\n";
+    $sql .= "DROP TABLE IF EXISTS `$table`;
+";
+    $sql .= $create['Create Table'] . ";
+
+";
 
     // Get data
     $rows = $db->query("SELECT * FROM `$table`")->getAll();
     if (!empty($rows)) {
         $columns = array_keys($rows[0]);
-        $sql .= "INSERT INTO `$table` (`" . implode('`, `', $columns) . "`) VALUES\n";
+        $sql .= "INSERT INTO `$table` (`" . implode('`, `', $columns) . "`) VALUES
+";
         $values = [];
         foreach ($rows as $row) {
             $vals = [];
@@ -54,12 +61,16 @@ foreach ($tableName as $table) {
             }
             $values[] = "(" . implode(', ', $vals) . ")";
         }
-        $sql .= implode(",\n", $values) . ";\n\n";
+        $sql .= implode(",
+", $values) . ";
+
+";
     }
 }
 
 file_put_contents($filepath, $sql);
-echo "Backup created: $filename\n";
+echo "Backup created: $filename
+";
 
 // Keep only last 7 backups
 $backups = glob($backupDir . 'backup_*.sql');
@@ -68,7 +79,8 @@ if (count($backups) > 7) {
     $toDelete = array_slice($backups, 0, count($backups) - 7);
     foreach ($toDelete as $old) {
         unlink($old);
-        echo "Deleted old backup: " . basename($old) . "\n";
+        echo "Deleted old backup: " . basename($old) . "
+";
     }
 }
 ?>

@@ -56,7 +56,8 @@
             <div class="kb-admin-card">
                 <div class="kb-admin-header">
                     <h3><?= htmlspecialchars($article['judul']) ?></h3>
-                    <form action="/admin/knowledge/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus artikel ini?')">\n                        <?= csrf_field() ?>
+                    <form action="/admin/knowledge/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus artikel ini?')">
+                        <?= csrf_field() ?>
                         <input type="hidden" name="id" value="<?= $article['id'] ?>">
                         <button type="submit" class="btn-danger btn-sm">Hapus</button>
                     </form>

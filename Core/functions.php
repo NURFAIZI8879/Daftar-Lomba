@@ -87,10 +87,14 @@ function slaRemaining($ticket) {
 function sendTicketNotification($to, $subject, $body) {
     // Best-effort email notification
     // Uses PHP mail() - may not work on all hosting
-    $headers = "From: noreply@tiketit.com\r\n";
-    $headers .= "Reply-To: noreply@tiketit.com\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $headers .= "X-Mailer: TiketIT\r\n";
+    $headers = "From: noreply@tiketit.com\r
+";
+    $headers .= "Reply-To: noreply@tiketit.com\r
+";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r
+";
+    $headers .= "X-Mailer: TiketIT\r
+";
     
     try {
         @mail($to, $subject, $body, $headers);
@@ -122,15 +126,26 @@ function notifyTicketStatusChange($db, $ticketId, $newStatus) {
     ];
     
     $subject = "TiketIT - Status Tiket #" . $ticketId . " Diperbarui";
-    $body = "Halo " . $ticket['user_nama'] . ",\n\n";
-    $body .= "Status tiket Anda telah diperbarui:\n\n";
-    $body .= "Judul: " . $ticket['judul'] . "\n";
-    $body .= "Status Baru: " . ($statusLabels[$newStatus] ?? $newStatus) . "\n";
+    $body = "Halo " . $ticket['user_nama'] . ",
+
+";
+    $body .= "Status tiket Anda telah diperbarui:
+
+";
+    $body .= "Judul: " . $ticket['judul'] . "
+";
+    $body .= "Status Baru: " . ($statusLabels[$newStatus] ?? $newStatus) . "
+";
     if ($ticket['teknisi_nama']) {
-        $body .= "Teknisi: " . $ticket['teknisi_nama'] . "\n";
+        $body .= "Teknisi: " . $ticket['teknisi_nama'] . "
+";
     }
-    $body .= "\nSilakan login ke TiketIT untuk melihat detail.\n\n";
-    $body .= "Terima kasih,\nTim IT";
+    $body .= "
+Silakan login ke TiketIT untuk melihat detail.
+
+";
+    $body .= "Terima kasih,
+Tim IT";
     
     sendTicketNotification($ticket['user_email'], $subject, $body);
 }

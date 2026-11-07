@@ -55,7 +55,8 @@
                         <td><?= htmlspecialchars($cat['nama']) ?></td>
                         <td><?= htmlspecialchars($cat['deskripsi'] ?? '-') ?></td>
                         <td>
-                            <form action="/admin/categories/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus kategori ini?')">\n                                <?= csrf_field() ?>
+                            <form action="/admin/categories/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus kategori ini?')">
+                                <?= csrf_field() ?>
                                 <input type="hidden" name="id" value="<?= $cat['id'] ?>">
                                 <button type="submit" class="btn-danger btn-sm">Hapus</button>
                             </form>
