@@ -79,7 +79,7 @@
             <div class="section-card">
                 <div class="section-header">
                     <h2>Tiket Terbaru</h2>
-                    <a href="/user/tickets" class="link-view-all">Lihat semua →</a>
+                    <a href="/user/tickets" class="link-view-all">Lihat semua </a>
                 </div>
                 <?php if (empty($recentTickets)): ?>
                     <div class="empty-state">
@@ -110,7 +110,7 @@
             <div class="section-card">
                 <div class="section-header">
                     <h2>Cari Solusi Cepat</h2>
-                    <a href="/user/knowledge" class="link-view-all">Lihat semua →</a>
+                    <a href="/user/knowledge" class="link-view-all">Lihat semua </a>
                 </div>
                 <p class="kb-hint">Cari solusi sebelum membuat tiket baru.</p>
                 <form method="GET" action="/user/knowledge" class="kb-search-form">
@@ -140,7 +140,7 @@
             <div class="section-card">
                 <div class="section-header">
                     <h3>Aset Saya</h3>
-                    <a href="/user/assets" class="link-view-all">Lihat semua →</a>
+                    <a href="/user/assets" class="link-view-all">Lihat semua </a>
                 </div>
                 <div class="asset-summary">
                     <div class="asset-count">
