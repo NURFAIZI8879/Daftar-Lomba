@@ -80,7 +80,7 @@
     <!-- Ticket Table -->
     <?php if (empty($tickets)): ?>
         <div class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">&#128203;</div>
             <p>Tidak ada tiket ditemukan.</p>
         </div>
     <?php else: ?>

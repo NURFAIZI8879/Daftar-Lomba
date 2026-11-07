@@ -47,7 +47,7 @@
 
     <?php if (empty($articles)): ?>
         <div class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">&#128203;</div>
             <p>Belum ada artikel.</p>
         </div>
     <?php else: ?>

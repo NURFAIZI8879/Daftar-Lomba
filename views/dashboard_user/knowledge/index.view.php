@@ -21,7 +21,7 @@
 
     <?php if (empty($articles)): ?>
         <div class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">&#128203;</div>
             <p>Tidak ada artikel ditemukan.</p>
         </div>
     <?php else: ?>

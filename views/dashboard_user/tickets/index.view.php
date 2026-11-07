@@ -1,4 +1,4 @@
-﻿<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/head.php') ?>
 <div class="dashboard-container">
     <div class="dashboard-header">
         <h1>Tiket Saya</h1>
@@ -12,7 +12,7 @@
 
     <?php if (empty($tickets)): ?>
         <div class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">&#128203;</div>
             <p>Belum ada tiket. Buat tiket pertama Anda!</p>
             <a href="/user/tickets/create" class="btn-primary">Buat Tiket</a>
         </div>

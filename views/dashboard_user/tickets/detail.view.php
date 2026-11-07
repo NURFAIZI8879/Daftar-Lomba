@@ -1,4 +1,4 @@
-﻿<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/dash-navbar.php') ?>
 <div class="dashboard-container">
     <div class="page-header">

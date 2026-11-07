@@ -56,22 +56,22 @@
     <!-- Quick Links -->
     <div class="dashboard-cards">
         <a href="/admin/tickets" class="dash-card">
-            <div class="dash-card-icon"></div>
+            <div class="dash-card-icon" style="font-size:1.5rem;">&#128203;</div>
             <h3>Kelola Tiket</h3>
             <p>Lihat, assign, dan update status tiket</p>
         </a>
         <a href="/admin/categories" class="dash-card">
-            <div class="dash-card-icon"></div>
+            <div class="dash-card-icon" style="font-size:1.5rem;">&#128203;</div>
             <h3>Kategori</h3>
             <p>Kelola kategori layanan IT</p>
         </a>
         <a href="/admin/announcements" class="dash-card">
-            <div class="dash-card-icon"></div>
+            <div class="dash-card-icon" style="font-size:1.5rem;">&#128203;</div>
             <h3>Pengumuman</h3>
             <p>Kelola pengumuman maintenance/gangguan</p>
         </a>
         <a href="/admin/knowledge" class="dash-card">
-            <div class="dash-card-icon"></div>
+            <div class="dash-card-icon" style="font-size:1.5rem;">&#128203;</div>
             <h3>Knowledge Base</h3>
             <p>Kelola FAQ dan solusi masalah umum</p>
         </a>

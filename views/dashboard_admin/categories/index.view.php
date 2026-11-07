@@ -34,7 +34,7 @@
 
     <?php if (empty($categories)): ?>
         <div class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">&#128203;</div>
             <p>Belum ada kategori.</p>
         </div>
     <?php else: ?>
