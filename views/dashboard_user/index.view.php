@@ -17,8 +17,8 @@
         </div>
     </div>
 
-    <!-- Banner Pengumuman -->
-    <?php if (!empty($announcements)): ?>
+    <!-- Banner Pengumuman (disabled for now) -->
+    <!-- <?php if (!empty($announcements)): ?>
     <div class="announcement-banner" id="announcement-banner">
         <?php foreach ($announcements as $ann): ?>
         <div class="ann-banner-item ann-<?= $ann['tipe'] ?>">
@@ -38,7 +38,7 @@
         </div>
         <?php endforeach; ?>
     </div>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
     <!-- Statistik Cards -->
     <div class="stats-row">
