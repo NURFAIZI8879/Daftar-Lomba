@@ -2,7 +2,10 @@
 <div class="dashboard-container">
     <div class="dashboard-header">
         <h1>Tiket Saya</h1>
-        <a href="/user/tickets/create" class="btn-primary">+ Buat Tiket Baru</a>
+        <div class="header-actions">
+            <a href="/user" class="btn-secondary btn-sm">Kembali</a>
+            <a href="/user/tickets/create" class="btn-primary">+ Buat Tiket Baru</a>
+        </div>
     </div>
 
     <?php if (isset($_SESSION['success'])): ?>

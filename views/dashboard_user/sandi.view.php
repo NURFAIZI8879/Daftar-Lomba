@@ -2,6 +2,7 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Ganti Password</h1>
+        <a href="/user" class="btn-secondary btn-sm">Kembali</a>
     </div>
 
     <?php if (isset($_SESSION['success'])): ?>
