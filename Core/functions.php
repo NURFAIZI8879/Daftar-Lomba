@@ -84,3 +84,53 @@ function slaRemaining($ticket) {
     $days = floor($hours / 24);
     return $days . ' hari lagi';
 }
+function sendTicketNotification($to, $subject, $body) {
+    // Best-effort email notification
+    // Uses PHP mail() - may not work on all hosting
+    $headers = "From: noreply@tiketit.com\r\n";
+    $headers .= "Reply-To: noreply@tiketit.com\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "X-Mailer: TiketIT\r\n";
+    
+    try {
+        @mail($to, $subject, $body, $headers);
+        return true;
+    } catch (Exception $e) {
+        error_log("Email notification failed: " . $e->getMessage());
+        return false;
+    }
+}
+
+function notifyTicketStatusChange($db, $ticketId, $newStatus) {
+    $ticket = $db->query(
+        'SELECT t.*, u.email AS user_email, u.nama AS user_nama, tek.nama AS teknisi_nama
+         FROM tickets t
+         JOIN users u ON t.id_user = u.id
+         LEFT JOIN users tek ON t.id_teknisi = tek.id
+         WHERE t.id = :id',
+        ['id' => $ticketId]
+    )->get();
+    
+    if (!$ticket) return;
+    
+    $statusLabels = [
+        'open' => 'Dibuka',
+        'in_progress' => 'Sedang Ditangani',
+        'waiting' => 'Menunggu',
+        'resolved' => 'Selesai',
+        'closed' => 'Ditutup',
+    ];
+    
+    $subject = "TiketIT - Status Tiket #" . $ticketId . " Diperbarui";
+    $body = "Halo " . $ticket['user_nama'] . ",\n\n";
+    $body .= "Status tiket Anda telah diperbarui:\n\n";
+    $body .= "Judul: " . $ticket['judul'] . "\n";
+    $body .= "Status Baru: " . ($statusLabels[$newStatus] ?? $newStatus) . "\n";
+    if ($ticket['teknisi_nama']) {
+        $body .= "Teknisi: " . $ticket['teknisi_nama'] . "\n";
+    }
+    $body .= "\nSilakan login ke TiketIT untuk melihat detail.\n\n";
+    $body .= "Terima kasih,\nTim IT";
+    
+    sendTicketNotification($ticket['user_email'], $subject, $body);
+}

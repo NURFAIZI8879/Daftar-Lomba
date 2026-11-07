@@ -17,6 +17,7 @@ $router->get('/user/tickets/create', 'controllers/user/tickets/create.php');
 $router->post('/user/tickets/store', 'controllers/user/tickets/store.php');
 $router->get('/user/tickets/detail', 'controllers/user/tickets/detail.php');
 $router->post('/user/tickets/comment', 'controllers/user/tickets/comment.php');
+$router->post('/user/tickets/rate', 'controllers/user/tickets/rate.php');
 $router->get('/user/assets', 'controllers/user/assets/index.php');
 $router->post('/user/assets/store', 'controllers/user/assets/store.php');
 $router->get('/user/knowledge', 'controllers/user/knowledge/index.php');

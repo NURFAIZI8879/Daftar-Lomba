@@ -58,6 +58,9 @@ $db->query(
     ]
 );
 
+// Send email notification (best-effort)
+notifyTicketStatusChange($db, $ticketId, $status);
+
 $_SESSION['success'] = 'Status tiket berhasil diubah.';
 header('location: /admin/tickets/detail?id=' . $ticketId);
 exit();

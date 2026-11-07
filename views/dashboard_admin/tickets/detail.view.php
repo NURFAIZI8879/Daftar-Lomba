@@ -1,4 +1,4 @@
-<?php require base_path('views/partials/head.php') ?>
+﻿<?php require base_path('views/partials/head.php') ?>
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Detail Tiket #<?= $ticket['id'] ?></h1>
@@ -53,7 +53,14 @@
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">SLA</span>
-                    <span><?= $ticket['sla_jam'] ?> jam</span>
+                    <span>
+                        <?= $ticket['sla_jam'] ?> jam
+                        <?php if (isOverdue($ticket)): ?>
+                            <span class="badge badge-overdue">Overdue</span>
+                        <?php elseif (!in_array($ticket['status'], ['resolved', 'closed'])): ?>
+                            <small class="text-muted">(<?= slaRemaining($ticket) ?>)</small>
+                        <?php endif; ?>
+                    </span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Dibuat</span>

@@ -185,3 +185,17 @@ INSERT INTO knowledge_base (id_category, judul, masalah, solusi, tags) VALUES
 (2, 'Tidak Bisa Connect WiFi', 'Tidak bisa connect ke WiFi kantor.', '1. Pastikan WiFi turned on.\n2. Lupa jaringan dan connect ulang.\n3. Restart router/access point.\n4. Update driver WiFi adapter.\n5. Hubungi IT jika masih gagal.', 'wifi,jaringan,connect,internet'),
 (3, 'Excel Crash', 'Microsoft Excel crash saat membuka file besar.', '1. Update Microsoft Office ke versi terbaru.\n2. Disable add-ins yang tidak perlu.\n3. Repair Office via Control Panel.\n4. Buka file dalam Safe Mode.\n5. Jika file corrupt, gunakan Open and Repair.', 'excel,crash,office,microsoft'),
 (4, 'Lupa Password Email', 'Lupa password email kantor.', '1. Hubungi admin IT.\n2. Verifikasi identitas (NIK/nama).\n3. Admin akan reset password.\n4. Login dengan password baru dan segera ganti.', 'password,email,reset,akun');
+
+-- ============================================================
+-- Tabel: ticket_ratings (Rating kepuasan pengguna)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS ticket_ratings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_ticket INT NOT NULL UNIQUE,
+    id_user INT NOT NULL,
+    rating TINYINT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    komentar TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_ticket) REFERENCES tickets(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE
+);

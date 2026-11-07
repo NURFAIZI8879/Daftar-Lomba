@@ -1,8 +1,9 @@
-<?php require base_path('views/partials/head.php') ?>
+﻿<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/dash-navbar.php') ?>
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Detail Tiket #<?= $ticket['id'] ?></h1>
-        <a href="/user/tickets" class="btn-secondary"> Kembali</a>
+        <a href="/user/tickets" class="btn-secondary">Kembali</a>
     </div>
 
     <?php if (isset($_SESSION['success'])): ?>
@@ -41,7 +42,14 @@
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">SLA</span>
-                    <span><?= $ticket['sla_jam'] ?> jam</span>
+                    <span>
+                        <?= $ticket['sla_jam'] ?> jam
+                        <?php if (isOverdue($ticket)): ?>
+                            <span class="badge badge-overdue">Overdue</span>
+                        <?php elseif (!in_array($ticket['status'], ['resolved', 'closed'])): ?>
+                            <small class="text-muted">(<?= slaRemaining($ticket) ?>)</small>
+                        <?php endif; ?>
+                    </span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Dibuat</span>
@@ -70,7 +78,7 @@
             <div class="ticket-attachment">
                 <h4>Lampiran</h4>
                 <a href="/uploads/tickets/<?= htmlspecialchars($ticket['lampiran']) ?>" target="_blank" class="attachment-link">
-                     <?= htmlspecialchars($ticket['lampiran']) ?>
+                    Lampiran: <?= htmlspecialchars($ticket['lampiran']) ?>
                 </a>
             </div>
             <?php endif; ?>
@@ -78,7 +86,43 @@
             <?php if ($asset): ?>
             <div class="ticket-asset">
                 <h4>Perangkat Terkait</h4>
-                <p><?= htmlspecialchars($asset['nama_perangkat']) ?>  <?= htmlspecialchars($asset['spesifikasi']) ?> (<?= htmlspecialchars($asset['lokasi']) ?>)</p>
+                <p><?= htmlspecialchars($asset['nama_perangkat']) ?> - <?= htmlspecialchars($asset['spesifikasi']) ?> (<?= htmlspecialchars($asset['lokasi']) ?>)</p>
+            </div>
+            <?php endif; ?>
+
+            <!-- Rating (only if resolved/closed) -->
+            <?php if (in_array($ticket['status'], ['resolved', 'closed'])): ?>
+            <div class="rating-card">
+                <h4>Rating Kepuasan</h4>
+                <?php
+                $rating = $db->query("SELECT * FROM ticket_ratings WHERE id_ticket = :id", ['id' => $ticket['id']])->get();
+                ?>
+                <?php if ($rating): ?>
+                    <div class="rating-display">
+                        <span class="rating-stars"><?= str_repeat('*', $rating['rating']) ?></span>
+                        <span class="rating-value"><?= $rating['rating'] ?>/5</span>
+                        <?php if ($rating['komentar']): ?>
+                            <p class="rating-comment"><?= htmlspecialchars($rating['komentar']) ?></p>
+                        <?php endif; ?>
+                    </div>
+                <?php else: ?>
+                    <form action="/user/tickets/rate" method="POST" class="rating-form">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="id_ticket" value="<?= $ticket['id'] ?>">
+                        <div class="rating-stars-input">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <label class="star-label">
+                                    <input type="radio" name="rating" value="<?= $i ?>" required>
+                                    <span class="star">*</span>
+                                </label>
+                            <?php endfor; ?>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="komentar" rows="2" placeholder="Komentar (opsional)..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-sm">Kirim Rating</button>
+                    </form>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
         </div>
@@ -99,7 +143,7 @@
                         </div>
                         <?php if ($comment['lampiran']): ?>
                             <div class="comment-attachment">
-                                <a href="/uploads/tickets/<?= htmlspecialchars($comment['lampiran']) ?>" target="_blank"> <?= htmlspecialchars($comment['lampiran']) ?></a>
+                                <a href="/uploads/tickets/<?= htmlspecialchars($comment['lampiran']) ?>" target="_blank">Lampiran: <?= htmlspecialchars($comment['lampiran']) ?></a>
                             </div>
                         <?php endif; ?>
                     </div>
