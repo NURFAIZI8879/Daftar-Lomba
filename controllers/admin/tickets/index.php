@@ -66,9 +66,7 @@ if ($search) { $countSql .= ' AND (t.judul LIKE :search OR u.nama LIKE :search2)
 $totalTickets = $db->query($countSql, $countParams)->get()['total'];
 $totalPages = max(1, ceil($totalTickets / $perPage));
 
-$sql .= ' ORDER BY t.created_at DESC LIMIT :limit OFFSET :offset';
-$params['limit'] = $perPage;
-$params['offset'] = $offset;
+$sql .= ' ORDER BY t.created_at DESC LIMIT ' . (int)$perPage . ' OFFSET ' . (int)$offset;
 
 $tickets = $db->query($sql, $params)->getAll();
 $categories = $db->query('SELECT * FROM categories ORDER BY nama')->getAll();
