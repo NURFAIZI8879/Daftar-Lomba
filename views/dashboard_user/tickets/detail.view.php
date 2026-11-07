@@ -2,7 +2,7 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Detail Tiket #<?= $ticket['id'] ?></h1>
-        <a href="/user/tickets" class="btn-secondary">← Kembali</a>
+        <a href="/user/tickets" class="btn-secondary"> Kembali</a>
     </div>
 
     <?php if (isset($_SESSION['success'])): ?>
@@ -70,7 +70,7 @@
             <div class="ticket-attachment">
                 <h4>Lampiran</h4>
                 <a href="/uploads/tickets/<?= htmlspecialchars($ticket['lampiran']) ?>" target="_blank" class="attachment-link">
-                    📎 <?= htmlspecialchars($ticket['lampiran']) ?>
+                     <?= htmlspecialchars($ticket['lampiran']) ?>
                 </a>
             </div>
             <?php endif; ?>
@@ -78,7 +78,7 @@
             <?php if ($asset): ?>
             <div class="ticket-asset">
                 <h4>Perangkat Terkait</h4>
-                <p><?= htmlspecialchars($asset['nama_perangkat']) ?> — <?= htmlspecialchars($asset['spesifikasi']) ?> (<?= htmlspecialchars($asset['lokasi']) ?>)</p>
+                <p><?= htmlspecialchars($asset['nama_perangkat']) ?>  <?= htmlspecialchars($asset['spesifikasi']) ?> (<?= htmlspecialchars($asset['lokasi']) ?>)</p>
             </div>
             <?php endif; ?>
         </div>
@@ -99,7 +99,7 @@
                         </div>
                         <?php if ($comment['lampiran']): ?>
                             <div class="comment-attachment">
-                                <a href="/uploads/tickets/<?= htmlspecialchars($comment['lampiran']) ?>" target="_blank">📎 <?= htmlspecialchars($comment['lampiran']) ?></a>
+                                <a href="/uploads/tickets/<?= htmlspecialchars($comment['lampiran']) ?>" target="_blank"> <?= htmlspecialchars($comment['lampiran']) ?></a>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -108,6 +108,7 @@
 
             <!-- Add comment -->
             <form action="/user/tickets/comment" method="POST" class="comment-form">
+                <?= csrf_field() ?>
                 <input type="hidden" name="id_ticket" value="<?= $ticket['id'] ?>">
                 <div class="form-group">
                     <textarea name="komentar" rows="3" placeholder="Tambahkan komentar..." required></textarea>

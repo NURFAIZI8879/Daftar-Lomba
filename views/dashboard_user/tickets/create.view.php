@@ -2,7 +2,7 @@
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Buat Tiket Baru</h1>
-        <a href="/user/tickets" class="btn-secondary">← Kembali</a>
+        <a href="/user/tickets" class="btn-secondary"> Kembali</a>
     </div>
 
     <?php if (isset($_SESSION['errors'])): ?>
@@ -16,6 +16,7 @@
 
     <div class="form-card">
         <form action="/user/tickets/store" method="POST" enctype="multipart/form-data">
+            <?= csrf_field() ?>
             <div class="form-group">
                 <label for="judul">Judul Tiket *</label>
                 <input type="text" id="judul" name="judul" required placeholder="Contoh: Laptop lambat saat booting" value="<?= htmlspecialchars($_SESSION['old']['judul'] ?? '') ?>">

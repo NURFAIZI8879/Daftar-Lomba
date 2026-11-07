@@ -12,6 +12,7 @@
     <div class="form-card mb-6">
         <h3>Tambah Artikel Baru</h3>
         <form action="/admin/knowledge/store" method="POST">
+        <?= csrf_field() ?>
             <div class="form-row">
                 <div class="form-group">
                     <label for="judul">Judul *</label>
@@ -45,7 +46,7 @@
 
     <?php if (empty($articles)): ?>
         <div class="empty-state">
-            <div class="empty-icon">📚</div>
+            <div class="empty-icon"></div>
             <p>Belum ada artikel.</p>
         </div>
     <?php else: ?>
@@ -54,12 +55,13 @@
             <div class="kb-admin-card">
                 <div class="kb-admin-header">
                     <h3><?= htmlspecialchars($article['judul']) ?></h3>
-                    <form action="/admin/knowledge/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus artikel ini?')">
+                    <form action="/admin/knowledge/delete" method="POST"
+                        <?= csrf_field() ?> style="display:inline;" onsubmit="return confirm('Hapus artikel ini?')">
                         <input type="hidden" name="id" value="<?= $article['id'] ?>">
                         <button type="submit" class="btn-danger btn-sm">Hapus</button>
                     </form>
                 </div>
-                <p class="kb-cat"><?= $article['kategori_icon'] ?? '🔧' ?> <?= htmlspecialchars($article['kategori_nama'] ?? 'Umum') ?></p>
+                <p class="kb-cat"><?= $article['kategori_icon'] ?? '' ?> <?= htmlspecialchars($article['kategori_nama'] ?? 'Umum') ?></p>
                 <p class="kb-masalah"><strong>Masalah:</strong> <?= nl2br(htmlspecialchars($article['masalah'])) ?></p>
                 <p class="kb-solusi"><strong>Solusi:</strong> <?= nl2br(htmlspecialchars($article['solusi'])) ?></p>
                 <?php if ($article['tags']): ?>

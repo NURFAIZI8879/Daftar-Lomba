@@ -10,35 +10,35 @@ Sistem Helpdesk & Ticketing IT untuk mengelola keluhan dan permintaan layanan IT
 
 ---
 
-## ✨ Fitur Utama
+##  Fitur Utama
 
 ### Untuk Pengguna (Karyawan)
-- 🎫 **Buat Tiket** — laporkan keluhan IT (kategori, judul, deskripsi, prioritas, lampiran screenshot)
-- 📊 **Dashboard** — lihat status tiket (Open, In Progress, Waiting, Resolved, Closed)
-- 💬 **Riwayat Penanganan** — timeline komentar dari teknisi dan pengguna
-- 💻 **Aset Saya** — daftar perangkat/aset yang terdaftar
-- 📚 **Knowledge Base** — FAQ dan solusi masalah umum (self-service)
+-  **Buat Tiket**  laporkan keluhan IT (kategori, judul, deskripsi, prioritas, lampiran screenshot)
+-  **Dashboard**  lihat status tiket (Open, In Progress, Waiting, Resolved, Closed)
+-  **Riwayat Penanganan**  timeline komentar dari teknisi dan pengguna
+-  **Aset Saya**  daftar perangkat/aset yang terdaftar
+-  **Knowledge Base**  FAQ dan solusi masalah umum (self-service)
 
 ### Untuk Admin / Teknisi
-- 📋 **Kelola Tiket** — lihat semua tiket, filter, pencarian, assign teknisi
-- 🔄 **Update Status** — Open → In Progress → Waiting → Resolved → Closed
-- 👥 **Manajemen Kategori** — CRUD kategori layanan IT
-- 📢 **Pengumuman** — buat pengumuman maintenance/gangguan/info
-- 📚 **Knowledge Base** — CRUD artikel FAQ
-- 💻 **Aset Perangkat** — lihat semua aset yang terdaftar
-- 📊 **Dashboard Statistik** — jumlah tiket per status, per kategori
+-  **Kelola Tiket**  lihat semua tiket, filter, pencarian, assign teknisi
+-  **Update Status**  Open  In Progress  Waiting  Resolved  Closed
+-  **Manajemen Kategori**  CRUD kategori layanan IT
+-  **Pengumuman**  buat pengumuman maintenance/gangguan/info
+-  **Knowledge Base**  CRUD artikel FAQ
+-  **Aset Perangkat**  lihat semua aset yang terdaftar
+-  **Dashboard Statistik**  jumlah tiket per status, per kategori
 
 ### Fitur Teknis
-- 🔐 **Autentikasi** — login/register dengan password_hash (bcrypt)
-- 👤 **Role-based access** — admin, teknisi, user
-- ⚡ **SLA & Prioritas** — target waktu penyelesaian per prioritas (Critical: 4 jam, High: 24 jam, Medium: 48 jam, Low: 72 jam)
-- 🔍 **Filter & Pencarian** — filter tiket by status, prioritas, kategori, search
-- 📎 **Upload Lampiran** — screenshot/file (max 5MB, JPG/PNG/GIF/PDF)
-- 🔒 **Keamanan** — prepared statements (PDO), validasi input, sanitasi output (XSS), session protection
+-  **Autentikasi**  login/register dengan password_hash (bcrypt)
+-  **Role-based access**  admin, teknisi, user
+-  **SLA & Prioritas**  target waktu penyelesaian per prioritas (Critical: 4 jam, High: 24 jam, Medium: 48 jam, Low: 72 jam)
+-  **Filter & Pencarian**  filter tiket by status, prioritas, kategori, search
+-  **Upload Lampiran**  screenshot/file (max 5MB, JPG/PNG/GIF/PDF)
+-  **Keamanan**  prepared statements (PDO), validasi input, sanitasi output (XSS), session protection
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Teknologi | Fungsi |
 |-----------|--------|
@@ -50,59 +50,59 @@ Sistem Helpdesk & Ticketing IT untuk mengelola keluhan dan permintaan layanan IT
 
 ---
 
-## 📁 Struktur Folder
+##  Struktur Folder
 
 ```
 TiketIT/
-├── bootstrap.php          # DI bootstrap
-├── config.php             # Konfigurasi database (env-based)
-├── config.local.php       # Override kredensial (gitignored)
-├── config.local.php.example # Template kredensial
-├── routes.php             # Routing
-├── database.sql           # Schema + seed data
-├── database_infinityfree.sql  # Schema untuk InfinityFree
-├── Core/                  # Framework mini
-│   ├── App.php            # Application container
-│   ├── Container.php      # DI container
-│   ├── Database.php       # PDO wrapper
-│   ├── Router.php         # Simple router
-│   ├── Validator.php      # Input validation
-│   ├── functions.php      # Helper functions
-│   └── Response.php       # HTTP response
-├── controllers/           # Logic per halaman
-│   ├── index.php          # Landing page
-│   ├── login/             # Login & check
-│   ├── registration/      # Register
-│   ├── logout.php         # Logout
-│   ├── sandi.update.php   # Update password
-│   ├── user/              # Dashboard user
-│   │   ├── index.php
-│   │   ├── tickets/       # CRUD tiket user
-│   │   ├── assets/        # Aset user
-│   │   └── knowledge/     # Knowledge base
-│   └── admin/             # Dashboard admin
-│       ├── index.php
-│       ├── tickets/       # Kelola tiket
-│       ├── categories/    # CRUD kategori
-│       ├── assets/        # Lihat aset
-│       ├── announcements/ # CRUD pengumuman
-│       └── knowledge/     # CRUD knowledge base
-├── views/                 # Tampilan (PHP templates)
-│   ├── partials/          # head, foot
-│   ├── dashboard_user/    # User views
-│   └── dashboard_admin/   # Admin views
-├── public/                # Static assets
-│   ├── css/               # Stylesheets
-│   ├── js/                # JavaScript
-│   ├── img/               # Images
-│   └── uploads/           # Uploaded files (gitignored)
-├── .gitignore
-└── README.md
+ bootstrap.php          # DI bootstrap
+ config.php             # Konfigurasi database (env-based)
+ config.local.php       # Override kredensial (gitignored)
+ config.local.php.example # Template kredensial
+ routes.php             # Routing
+ database.sql           # Schema + seed data
+ database_infinityfree.sql  # Schema untuk InfinityFree
+ Core/                  # Framework mini
+    App.php            # Application container
+    Container.php      # DI container
+    Database.php       # PDO wrapper
+    Router.php         # Simple router
+    Validator.php      # Input validation
+    functions.php      # Helper functions
+    Response.php       # HTTP response
+ controllers/           # Logic per halaman
+    index.php          # Landing page
+    login/             # Login & check
+    registration/      # Register
+    logout.php         # Logout
+    sandi.update.php   # Update password
+    user/              # Dashboard user
+       index.php
+       tickets/       # CRUD tiket user
+       assets/        # Aset user
+       knowledge/     # Knowledge base
+    admin/             # Dashboard admin
+        index.php
+        tickets/       # Kelola tiket
+        categories/    # CRUD kategori
+        assets/        # Lihat aset
+        announcements/ # CRUD pengumuman
+        knowledge/     # CRUD knowledge base
+ views/                 # Tampilan (PHP templates)
+    partials/          # head, foot
+    dashboard_user/    # User views
+    dashboard_admin/   # Admin views
+ public/                # Static assets
+    css/               # Stylesheets
+    js/                # JavaScript
+    img/               # Images
+    uploads/           # Uploaded files (gitignored)
+ .gitignore
+ README.md
 ```
 
 ---
 
-## 🚀 Instalasi & Cara Menjalankan
+##  Instalasi & Cara Menjalankan
 
 ### Prasyarat
 - PHP 8.x
@@ -143,7 +143,7 @@ php -S localhost:8000
 
 ---
 
-## 👤 Akun Demo
+##  Akun Demo
 
 | Role | Email | Password |
 |------|-------|----------|
@@ -154,7 +154,7 @@ php -S localhost:8000
 
 ---
 
-## 📐 Peran & Kontribusi
+##  Peran & Kontribusi
 
 - **Peran:** Full-Stack Developer (solo)
 - **Kontribusi:**
@@ -170,7 +170,7 @@ php -S localhost:8000
 
 ---
 
-## 🏆 Pencapaian
+##  Pencapaian
 
 - Sistem helpdesk fungsional dengan 3 role (admin, teknisi, user).
 - 8 tabel database dengan relasi dan foreign key yang benar.
@@ -179,7 +179,7 @@ php -S localhost:8000
 
 ---
 
-## 🔮 Rencana Pengembangan
+##  Rencana Pengembangan
 
 - [ ] Notifikasi real-time (WebSocket atau polling)
 - [ ] Chart dashboard (Chart.js) untuk statistik
@@ -191,7 +191,7 @@ php -S localhost:8000
 
 ---
 
-## 📞 Kontak
+##  Kontak
 
 - **Nama:** Nurfaizi
 - **Email:** faiziasyi140406@gmail.com
@@ -201,10 +201,10 @@ php -S localhost:8000
 
 ---
 
-## 📄 Lisensi
+##  Lisensi
 
 Proyek ini untuk keperluan edukasi & portofolio.
 
 ---
 
-> 💡 **Catatan untuk recruiter:** Project ini menunjukkan kemampuan rancang ulang sistem (database design, RBAC, CRUD, keamanan dasar), implementasi helpdesk ticketing, dan refactoring kode dari project lama ke konsep baru. Fondasi berasal dari project tim "Kenten" (sistem pengelolaan kompetisi) yang dikembangkan lanjut dengan izin rekan tim. Semua nama, konsep, tampilan, dan teks telah diubah total.
+>  **Catatan untuk recruiter:** Project ini menunjukkan kemampuan rancang ulang sistem (database design, RBAC, CRUD, keamanan dasar), implementasi helpdesk ticketing, dan refactoring kode dari project lama ke konsep baru. Fondasi berasal dari project tim "Kenten" (sistem pengelolaan kompetisi) yang dikembangkan lanjut dengan izin rekan tim. Semua nama, konsep, tampilan, dan teks telah diubah total.

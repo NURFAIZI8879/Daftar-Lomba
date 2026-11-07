@@ -2,6 +2,8 @@
 
 use Core\App;
 use Core\Database;
+use Core\Auth;
+
 
 $db = App::resolve(Database::class);
 

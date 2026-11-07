@@ -1,4 +1,5 @@
 <?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/dash-navbar.php') ?>
 <div class="dashboard-container">
     <div class="page-header">
         <h1>Kelola Tiket</h1>
@@ -77,7 +78,7 @@
     <!-- Ticket Table -->
     <?php if (empty($tickets)): ?>
         <div class="empty-state">
-            <div class="empty-icon">🎫</div>
+            <div class="empty-icon"></div>
             <p>Tidak ada tiket ditemukan.</p>
         </div>
     <?php else: ?>
@@ -91,6 +92,7 @@
                         <th>Kategori</th>
                         <th>Prioritas</th>
                         <th>Status</th>
+                        <th>SLA</th>
                         <th>Teknisi</th>
                         <th>Tanggal</th>
                         <th>Aksi</th>
@@ -105,9 +107,18 @@
                         <td><?= $ticket['kategori_icon'] ?> <?= htmlspecialchars($ticket['kategori_nama']) ?></td>
                         <td><span class="badge badge-priority-<?= $ticket['prioritas'] ?>"><?= ucfirst($ticket['prioritas']) ?></span></td>
                         <td><span class="badge badge-<?= $ticket['status'] ?>"><?= ucfirst(str_replace('_', ' ', $ticket['status'])) ?></span></td>
+                        <td>
+                            <?php if (isOverdue($ticket)): ?>
+                                <span class="badge badge-overdue">Overdue</span>
+                            <?php elseif (!in_array($ticket['status'], ['resolved', 'closed'])): ?>
+                                <span class="text-muted" style="font-size:0.75rem;"><?= slaRemaining($ticket) ?></span>
+                            <?php else: ?>
+                                <span class="text-muted" style="font-size:0.75rem;">-</span>
+                            <?php endif; ?>
+                        </td>
                         <td><?= $ticket['teknisi_nama'] ? htmlspecialchars($ticket['teknisi_nama']) : '<span class="text-muted">-</span>' ?></td>
                         <td><?= date('d/m/Y', strtotime($ticket['created_at'])) ?></td>
-                        <td><a href="/admin/tickets/detail?id=<?= $ticket['id'] ?>" class="btn-sm">Detail</a></td>
+                        <td><a href="/admin/tickets/detail?id=<?= $ticket['id'] ?>" class="btn-sm btn-primary">Detail</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

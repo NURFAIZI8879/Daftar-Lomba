@@ -6,7 +6,7 @@
 
     <?php if (empty($assets)): ?>
         <div class="empty-state">
-            <div class="empty-icon">💻</div>
+            <div class="empty-icon"></div>
             <p>Belum ada aset terdaftar.</p>
         </div>
     <?php else: ?>

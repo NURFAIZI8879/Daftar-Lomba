@@ -16,6 +16,7 @@
 
     <div class="form-card" style="max-width: 500px;">
         <form action="/sandi" method="POST">
+            <?= csrf_field() ?>
             <div class="form-group">
                 <label for="old_password">Password Lama *</label>
                 <input type="password" id="old_password" name="old_password" required placeholder="Password lama">

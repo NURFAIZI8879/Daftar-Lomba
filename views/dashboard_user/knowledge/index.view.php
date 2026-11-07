@@ -20,7 +20,7 @@
 
     <?php if (empty($articles)): ?>
         <div class="empty-state">
-            <div class="empty-icon">📚</div>
+            <div class="empty-icon"></div>
             <p>Tidak ada artikel ditemukan.</p>
         </div>
     <?php else: ?>
@@ -28,7 +28,7 @@
             <?php foreach ($articles as $article): ?>
             <div class="kb-card">
                 <div class="kb-header">
-                    <span class="kb-category"><?= $article['kategori_icon'] ?? '🔧' ?> <?= htmlspecialchars($article['kategori_nama'] ?? 'Umum') ?></span>
+                    <span class="kb-category"><?= $article['kategori_icon'] ?? '' ?> <?= htmlspecialchars($article['kategori_nama'] ?? 'Umum') ?></span>
                     <h3><?= htmlspecialchars($article['judul']) ?></h3>
                 </div>
                 <div class="kb-body">

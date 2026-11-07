@@ -12,6 +12,7 @@
     <div class="form-card mb-6">
         <h3>Tambah Kategori Baru</h3>
         <form action="/admin/categories/store" method="POST">
+        <?= csrf_field() ?>
             <div class="form-row">
                 <div class="form-group">
                     <label for="nama">Nama Kategori *</label>
@@ -19,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="icon">Icon (emoji)</label>
-                    <input type="text" id="icon" name="icon" placeholder="🔧" value="🔧">
+                    <input type="text" id="icon" name="icon" placeholder="" value="">
                 </div>
             </div>
             <div class="form-group">
@@ -32,7 +33,7 @@
 
     <?php if (empty($categories)): ?>
         <div class="empty-state">
-            <div class="empty-icon">📂</div>
+            <div class="empty-icon"></div>
             <p>Belum ada kategori.</p>
         </div>
     <?php else: ?>
@@ -53,7 +54,8 @@
                         <td><?= htmlspecialchars($cat['nama']) ?></td>
                         <td><?= htmlspecialchars($cat['deskripsi'] ?? '-') ?></td>
                         <td>
-                            <form action="/admin/categories/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus kategori ini?')">
+                            <form action="/admin/categories/delete" method="POST"
+                                <?= csrf_field() ?> style="display:inline;" onsubmit="return confirm('Hapus kategori ini?')">
                                 <input type="hidden" name="id" value="<?= $cat['id'] ?>">
                                 <button type="submit" class="btn-danger btn-sm">Hapus</button>
                             </form>

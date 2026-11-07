@@ -4,7 +4,7 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="hero-logo">
-                <span class="logo-icon">🎫</span>
+                <span class="logo-icon"></span>
                 <h1>TiketIT</h1>
             </div>
             <p class="hero-tagline">Sistem Helpdesk & Ticketing IT</p>
@@ -25,32 +25,32 @@
             <h2 class="section-title">Fitur Utama</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎫</div>
+                    <div class="feature-icon"></div>
                     <h3>Buat Tiket</h3>
                     <p>Laporkan keluhan IT dengan mudah: pilih kategori, isi deskripsi, tambahkan lampiran.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon"></div>
                     <h3>Dashboard Statistik</h3>
                     <p>Pantau jumlah tiket per status, per kategori, dan rata-rata waktu penyelesaian.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💬</div>
+                    <div class="feature-icon"></div>
                     <h3>Riwayat Penanganan</h3>
                     <p>Setiap tiket memiliki timeline komentar dari teknisi dan pengguna.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📢</div>
+                    <div class="feature-icon"></div>
                     <h3>Pengumuman</h3>
                     <p>Info maintenance, gangguan, dan pengumuman penting dari tim IT.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📚</div>
+                    <div class="feature-icon"></div>
                     <h3>Knowledge Base</h3>
                     <p>FAQ dan solusi masalah umum untuk self-service.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon"></div>
                     <h3>SLA & Prioritas</h3>
                     <p>Tiket diprioritaskan (Low/Medium/High/Critical) dengan target waktu penyelesaian.</p>
                 </div>

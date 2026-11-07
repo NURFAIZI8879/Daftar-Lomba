@@ -2,6 +2,15 @@
 
 use Core\App;
 use Core\Database;
+use Core\Auth;
+
+// CSRF validation
+if (!Auth::validateCsrfToken($_POST['csrf_token'] ?? '')) {
+    $_SESSION['error'] = 'Token tidak valid.';
+    header('location: /' . $_SESSION['user']['role'] . '/sandi');
+    exit();
+}
+
 
 $db = App::resolve(Database::class);
 

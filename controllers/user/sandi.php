@@ -1,1 +1,6 @@
-<?php\n\nview('dashboard_user/sandi.view.php', [\n    'css' => 'dashboard.css',\n    'title' => 'Ganti Password - TiketIT'\n]);
+<?php
+
+view('dashboard_user/sandi.view.php', [
+    'css' => 'dashboard.css',
+    'title' => 'Ganti Password - TiketIT'
+]);

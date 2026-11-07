@@ -2,7 +2,7 @@
 <div class="auth-container">
     <div class="auth-card">
         <div class="auth-logo">
-            <span class="logo-icon">🎫</span>
+            <span class="logo-icon"></span>
             <h1>TiketIT</h1>
             <p>Daftar Akun Baru</p>
         </div>
@@ -26,6 +26,7 @@
         <?php $old = $_SESSION['old'] ?? []; unset($_SESSION['old']); ?>
 
         <form action="/register" method="POST" class="auth-form">
+        <?= csrf_field() ?>
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" id="name" name="name" placeholder="Nama lengkap" required value="<?= htmlspecialchars($old['name'] ?? '') ?>">
@@ -55,7 +56,7 @@
 
         <div class="auth-links">
             <p>Sudah punya akun? <a href="/login">Login</a></p>
-            <a href="/" class="home-link">← Kembali ke Beranda</a>
+            <a href="/" class="home-link"> Kembali ke Beranda</a>
         </div>
     </div>
 </div>

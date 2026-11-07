@@ -12,7 +12,7 @@
 
     <?php if (empty($tickets)): ?>
         <div class="empty-state">
-            <div class="empty-icon">🎫</div>
+            <div class="empty-icon"></div>
             <p>Belum ada tiket. Buat tiket pertama Anda!</p>
             <a href="/user/tickets/create" class="btn-primary">Buat Tiket</a>
         </div>
@@ -28,7 +28,7 @@
                     <h3 class="ticket-title"><?= htmlspecialchars($ticket['judul']) ?></h3>
                     <div class="ticket-meta">
                         <span><?= $ticket['kategori_icon'] ?> <?= htmlspecialchars($ticket['kategori_nama']) ?></span>
-                        <span>📅 <?= date('d M Y', strtotime($ticket['created_at'])) ?></span>
+                        <span> <?= date('d M Y', strtotime($ticket['created_at'])) ?></span>
                     </div>
                 </a>
             <?php endforeach; ?>

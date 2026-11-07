@@ -12,6 +12,7 @@
     <div class="form-card mb-6">
         <h3>Buat Pengumuman Baru</h3>
         <form action="/admin/announcements/store" method="POST">
+        <?= csrf_field() ?>
             <div class="form-group">
                 <label for="judul">Judul *</label>
                 <input type="text" id="judul" name="judul" required placeholder="Judul pengumuman">
@@ -40,7 +41,7 @@
 
     <?php if (empty($announcements)): ?>
         <div class="empty-state">
-            <div class="empty-icon">📢</div>
+            <div class="empty-icon"></div>
             <p>Belum ada pengumuman.</p>
         </div>
     <?php else: ?>
@@ -55,7 +56,8 @@
                 <p class="ann-body"><?= nl2br(htmlspecialchars($ann['isi'])) ?></p>
                 <div class="ann-footer">
                     <small>Oleh: <?= htmlspecialchars($ann['author_nama']) ?></small>
-                    <form action="/admin/announcements/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus pengumuman ini?')">
+                    <form action="/admin/announcements/delete" method="POST"
+                        <?= csrf_field() ?> style="display:inline;" onsubmit="return confirm('Hapus pengumuman ini?')">
                         <input type="hidden" name="id" value="<?= $ann['id'] ?>">
                         <button type="submit" class="btn-danger btn-sm">Hapus</button>
                     </form>

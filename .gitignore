@@ -1,4 +1,4 @@
-﻿# Config (production credentials)
+# Config (production credentials)
 config.local.php
 
 # Uploads
@@ -21,3 +21,5 @@ desktop.ini
 # Temporary files
 tmp/
 temp/
+# Local dev router
+router.php

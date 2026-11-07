@@ -45,3 +45,42 @@ function view($path, $attributes = [])
 
     require base_path('views/' . $path);
 }
+function csrf_field()
+{
+    $token = \Core\Auth::generateCsrfToken();
+    return '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($token) . '">';
+}
+
+function csrf_token()
+{
+    return \Core\Auth::generateCsrfToken();
+}
+
+function isOverdue($ticket) {
+    if (in_array($ticket['status'], ['resolved', 'closed'])) {
+        return false;
+    }
+    $created = strtotime($ticket['created_at']);
+    $slaSeconds = $ticket['sla_jam'] * 3600;
+    $deadline = $created + $slaSeconds;
+    return time() > $deadline;
+}
+
+function slaRemaining($ticket) {
+    if (in_array($ticket['status'], ['resolved', 'closed'])) {
+        return null;
+    }
+    $created = strtotime($ticket['created_at']);
+    $slaSeconds = $ticket['sla_jam'] * 3600;
+    $deadline = $created + $slaSeconds;
+    $remaining = $deadline - time();
+    if ($remaining < 0) {
+        return 'Overdue';
+    }
+    $hours = floor($remaining / 3600);
+    if ($hours < 24) {
+        return $hours . ' jam lagi';
+    }
+    $days = floor($hours / 24);
+    return $days . ' hari lagi';
+}

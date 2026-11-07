@@ -12,6 +12,7 @@
     <div class="form-card mb-6">
         <h3>Tambah Aset Baru</h3>
         <form action="/user/assets/store" method="POST">
+            <?= csrf_field() ?>
             <div class="form-row">
                 <div class="form-group">
                     <label for="nama_perangkat">Nama Perangkat *</label>
@@ -32,7 +33,7 @@
 
     <?php if (empty($assets)): ?>
         <div class="empty-state">
-            <div class="empty-icon">💻</div>
+            <div class="empty-icon"></div>
             <p>Belum ada aset terdaftar.</p>
         </div>
     <?php else: ?>
