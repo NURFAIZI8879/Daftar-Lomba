@@ -91,7 +91,7 @@
     <section class="cta-section">
         <div class="container">
             <h2>Siap menggunakan TiketIT?</h2>
-            <p>Gunakan akun demo untuk mencoba: admin@tiketit.com / password</p>
+            <p>Login atau register untuk mulai melaporkan keluhan IT.</p>
         </div>
     </section>
 </div>
