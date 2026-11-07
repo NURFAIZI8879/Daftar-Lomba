@@ -1612,3 +1612,53 @@ body {
 @media (max-width: 640px) {
     .stats-row { grid-template-columns: repeat(2, 1fr); }
 }
+/* ===== Mobile Touch & Accessibility ===== */
+* {
+    -webkit-tap-highlight-color: rgba(13, 148, 136, 0.1);
+}
+
+body {
+    -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
+}
+
+/* Minimum touch targets */
+button, a, input, select, textarea {
+    min-height: 44px;
+}
+
+.btn-sm {
+    min-height: 36px;
+}
+
+/* Smooth scrolling on mobile */
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text size adjustment on mobile */
+body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Better table scrolling on mobile */
+.table-responsive {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
