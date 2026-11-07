@@ -42,10 +42,12 @@
                 <span class="dash-nav-name"><?= htmlspecialchars($_SESSION['user']['nama']) ?></span>
                 <span class="dash-nav-role badge-role-<?= $_SESSION['user']['role'] ?>"><?= ucfirst($_SESSION['user']['role']) ?></span>
             </div>
-            <div class="dash-user-dropdown">
-                <a href="/<?= $_SESSION['user']['role'] === 'admin' || $_SESSION['user']['role'] === 'teknisi' ? 'admin' : 'user' ?>/sandi" class="dropdown-item">Ubah Password</a>
-                <a href="/logout" class="dropdown-item dropdown-danger" onclick="return confirm('Yakin ingin keluar?')">Logout</a>
-            </div>
+            <a href="/<?= $_SESSION['user']['role'] === 'admin' || $_SESSION['user']['role'] === 'teknisi' ? 'admin' : 'user' ?>/sandi" class="dash-nav-btn" title="Ubah Password">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </a>
+            <a href="/logout" class="dash-nav-btn dash-nav-logout" title="Logout" onclick="return confirm('Yakin ingin keluar?')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </a>
         </div>
         <button class="dash-nav-toggle" onclick="document.querySelector('.dash-nav-links').classList.toggle('show'); document.querySelector('.dash-nav-user').classList.toggle('show');">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -70,35 +72,25 @@
 .dash-user-info {
     display: none;
 }
-.dash-user-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+.dash-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    min-width: 160px;
-    z-index: 200;
-}
-.dash-nav-user:hover .dash-user-dropdown {
-    display: block;
-}
-.dropdown-item {
-    display: block;
-    padding: 0.625rem 1rem;
-    font-size: 0.85rem;
-    color: var(--text);
+    color: var(--text-muted);
     text-decoration: none;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    flex-shrink: 0;
 }
-.dropdown-item:hover {
-    background: var(--bg-alt);
+.dash-nav-btn:hover {
+    color: var(--primary);
+    background: var(--primary-50);
 }
-.dropdown-danger {
+.dash-nav-logout:hover {
     color: var(--danger);
-    border-top: 1px solid var(--border);
+    background: #fee2e2;
 }
 @media (min-width: 768px) {
     .dash-user-info {
